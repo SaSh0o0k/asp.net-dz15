@@ -158,7 +158,7 @@ const CategoryEditPage: React.FC = () => {
                     </Button>
                     <Link to={"/"}>
                         <Button style={{margin: 10}} htmlType="button">
-                            Скасувать
+                            Скасувати
                         </Button>
                     </Link>
                 </Row>

@@ -5,13 +5,9 @@ import {
     UploadOutlined,
     UserOutlined,
     VideoCameraOutlined,
-    LogoutOutlined
 } from '@ant-design/icons';
 import { Layout, Menu, Button, theme } from 'antd';
 import {Link, Outlet} from "react-router-dom";
-// import {IAuthReducerState} from "../../auth/AuthReducer.ts";
-import {useAppSelector} from "../../../app/hooks.ts";
-import {MenuItemType} from "antd/es/menu/hooks/useItems";
 
 const { Header, Sider, Content } = Layout;
 
@@ -20,48 +16,6 @@ const ContainerDefault: React.FC = () => {
     const {
         token: { colorBgContainer, borderRadiusLG },
     } = theme.useToken();
-
-    // const {isAuth, user} = useSelector((redux: any)=>redux.auth as IAuthReducerState);
-    const auth = useAppSelector(store=>store.auth);
-
-    console.log("---user is Auth---", auth.isAuth);
-    console.log("---user info---", auth.user);
-
-    let items : MenuItemType[] = [];
-    if(!auth.isAuth) {
-        items.push(
-            {
-                key: '34',
-                icon: <UserOutlined />,
-                label: <Link to="/login">Вхід</Link>,
-            }
-        );
-        items.push({
-            key: '1',
-            icon: <UserOutlined />,
-            label: <Link to="/register">Реєстрація</Link>,
-        });
-    }
-    else {
-        items.push(
-            {
-                key: '34',
-                icon: <LogoutOutlined />,
-                label: "Вихід",
-                onClick: () => {
-                    console.log("Вихід на сайті")
-                }
-            }
-        );
-
-        items.push(
-            {
-                key: '34',
-                icon: <UserOutlined />,
-                label: <Link to="/profile">{auth.user?.name}</Link>,
-            }
-        );
-    }
 
     return (
         <Layout style={{minHeight:"100vh"}}>
@@ -72,7 +26,11 @@ const ContainerDefault: React.FC = () => {
                     mode="inline"
                     defaultSelectedKeys={['1']}
                     items={[
-                        ...items,
+                        {
+                            key: '1',
+                            icon: <UserOutlined />,
+                            label: <Link to="/register">Реєстрація</Link>,
+                        },
                         {
                             key: '2',
                             icon: <VideoCameraOutlined />,

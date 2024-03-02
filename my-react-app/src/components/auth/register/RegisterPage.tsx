@@ -6,9 +6,9 @@ import type { RcFile, UploadProps } from 'antd/es/upload';
 import type { UploadFile } from 'antd/es/upload/interface';
 import http_common from "../../../http_common.ts";
 import {IRegisterForm, IRegister, ILoginResult, IUserLoginInfo} from "../../../interfaces/auth";
-import {jwtDecode} from "jwt-decode";
 import {imageConverter} from "../../../interfaces/forms";
 import {useNavigate} from "react-router-dom";
+import {jwtDecode} from "jwt-decode";
 
 
 const RegisterPage = () => {
